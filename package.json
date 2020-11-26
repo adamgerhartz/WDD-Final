@@ -1,0 +1,24 @@
+{
+  "name": "wdd-final",
+  "version": "1.0.0",
+  "description": "Full-stack multiple page, basic social media application completed for Web Design & Development class (Dec 2020)",
+  "main": "server.js",
+  "scripts": {
+    "start": "server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamgerhartz/WDD-Final.git"
+  },
+  "author": "Adam R. Gerhartz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamgerhartz/WDD-Final/issues"
+  },
+  "homepage": "https://github.com/adamgerhartz/WDD-Final#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
