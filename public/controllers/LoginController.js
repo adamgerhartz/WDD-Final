@@ -10,5 +10,6 @@ export default class LoginController {
 
 	showLoginForm() {
 		// TODO: render the login form
+		this.loginView.renderForm();
 	}
 }
