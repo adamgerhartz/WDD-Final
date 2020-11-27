@@ -18,10 +18,8 @@ function hash(req, res) {
 }
 
 function validateUsername(req, res) {
-	let string = "</script>'foo";
-	console.log(htmlspecialchars(string));
 	const username = htmlspecialchars(req.query.username);
-
+	
 	loginModel.validateUsername(username, (err, results) => {
 		res.send(results);
 	});
