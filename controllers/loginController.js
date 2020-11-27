@@ -36,7 +36,7 @@ function validatePassword(req, res) {
 		}
 		const hash = results[0].password;
 		bcrypt.compare(password, hash, (err, result) => {
-    		if result = true {
+    		if (result = true) {
     			res.send(true);
     		} else {
     			res.send(false);
