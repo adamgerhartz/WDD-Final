@@ -21,7 +21,7 @@ function validateUsername(username, callback) {
 			console.log(err.stack);
 		} else {
 			console.log(db_results.rows.length);
-			if (!db_results.rows) {
+			if (db_results.rows.length === 0) {
 				callback(null, false);
 			} else {
 				callback(null, true);
