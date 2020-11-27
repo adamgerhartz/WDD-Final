@@ -76,7 +76,7 @@ export default class LoginController {
 						this.loginView.renderError('inUn');
 					} else {
 						if (!isEmptyPassword && !this.loginView.isErrorDisplayed()) {
-							this.loginModel.authenticatePassword(password, (result) => {
+							this.loginModel.authenticatePassword(username, password, (result) => {
 								if (result === false) {
 									this.loginView.renderError("inPw");
 								} else {
