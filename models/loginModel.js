@@ -31,7 +31,7 @@ function validateUsername(username, callback) {
 
 function fetchPasswordByUsername(username, callback) {
 	console.log(`Fetching password with username: ${username}`);
-	const sql = "SELECT password FROM public.user WHERE id = $1::text";
+	const sql = "SELECT password FROM public.user WHERE user_id = $1::text";
 	const params = [username];
 	pool.query(sql, params, (err, db_results) => {
 		if (err) {
