@@ -19,7 +19,7 @@ function hash(req, res) {
 
 function validateUsername(req, res) {
 	const username = htmlspecialchars(req.query.username);
-	
+
 	loginModel.validateUsername(username, (err, results) => {
 		res.send(results);
 	});
@@ -27,7 +27,7 @@ function validateUsername(req, res) {
 }
 
 function validatePassword(req, res) {
-	const username = req.body.username;
+	const username = htmlspecialchars(req.body.username);
 	const password = req.body.password;
 
 	// Fetch the password hash from the db
