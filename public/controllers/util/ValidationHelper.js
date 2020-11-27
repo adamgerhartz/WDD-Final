@@ -9,7 +9,7 @@ export default class ValidationHelper {
 			return false;
 		}
 
-		if (!this.isAlpha(username) && this.isEmpty(username)) {
+		if (!this.isAlpha(username) || this.isEmpty(username)) {
 			return false;
 		}
 
