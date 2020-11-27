@@ -38,9 +38,9 @@ function validatePassword(req, res) {
 		bcrypt.compare(password, hash, (err, result) => {
 			console.log(`RESULT: ${result}`);
     		if (result === true) {
-    			res.send(true);
+    			res.send(null, true);
     		} else {
-    			res.send(false);
+    			res.send(null, false);
     		}
 		});
 	});
