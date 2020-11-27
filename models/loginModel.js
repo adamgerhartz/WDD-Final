@@ -41,7 +41,6 @@ function fetchPasswordByUsername(username, callback) {
 				success: true,
 				list: db_results.rows
 			}
-			console.log(results);
 			callback(null, results);
 		}
 	});
