@@ -18,7 +18,7 @@ export default class LoginModel {
 			if (err) {
 				throw err; 
 			}
-
+			console.log(results);
 		});
 	}
 }
