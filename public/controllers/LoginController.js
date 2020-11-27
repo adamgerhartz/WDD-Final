@@ -11,7 +11,6 @@ export default class LoginController {
 		this.usernameEl = '';
 		this.passwordEl = '';
 		this.submitEl = '';
-		this.usernameInput = '';
 	}
 
 	showLoginForm() {
@@ -29,11 +28,10 @@ export default class LoginController {
 			this.loginView.hideErrorMessages(); 
 		});
 		this.usernameEl.addEventListener('keyup', (event) => {
-			this.usernameInput = event.target.value;
-			if (this.usernameInput !== '') {
-				const isValidUsername = this.validationHelper.isValidUsername(this.usernameInput);
+			if (event.target.value !== '') {
+				const isValidUsername = this.validationHelper.isValidUsername(event.target.value);
 				if (!isValidUsername && !this.loginView.isErrorDisplayed()) {
-					this.LoginView.renderError('username');
+					this.loginView.renderError('un');
 				} else if (isValidUsername && this.loginView.isErrorDisplayed()) {
 					this.loginView.hideErrorMessages();
 				}
@@ -42,11 +40,52 @@ export default class LoginController {
 
 		// password
 		this.passwordEl.addEventListener("keydown", () => {
-			this.LoginView.hideErrorMessages();
+			this.loginView.hideErrorMessages();
 		});
-		this.passwordEl.addEventListener("keyup", () => {
-			if (event.target.value !== '') {
-				this.hashedPassword = this.loginModel.hashPassword(event.target.value);
+		// this.passwordEl.addEventListener("keyup", (event) => {
+		// 	console.log(event.target.value);
+		// 	if (event.target.value !== '') {
+		// 		this.loginModel.hashPassword(event.target.value, (hash) => {
+		// 			this.hashedPassword = hash;
+		// 			console.log(this.hashedPassword);
+		// 		});
+				
+		// 	}
+		// });
+
+		// submit
+		this.parentElement.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const username = event.target[0].value;
+			const password = event.target[1].value;
+			const isEmptyUsername = this.validationHelper.isEmpty(username);
+			const isEmptyPassword = this.validationHelper.isEmpty(password);
+			if (isEmptyUsername || isEmptyPassword || this.loginView.isErrorDisplayed()) {
+				if (isEmptyUsername) {
+					this.loginView.renderError('un-e');
+				}
+				if (isEmptyPassword) {
+					this.loginView.renderError('pw');
+				}
+				return;
+			}
+
+			if (!isEmptyUsername && this.validationHelper.isValidUsername(username)) {
+				this.loginModel.isUsername(username, (result) => {
+					if (result === false) {
+						this.loginView.renderError('inUn');
+					} else {
+						if (!isEmptyPassword && !this.loginView.isErrorDisplayed()) {
+							this.loginModel.authenticatePassword(password, (result) => {
+								if (result === false) {
+									this.loginView.renderError("inPw");
+								} else {
+									window.location.href = "../home.html";
+								}
+							});
+						}
+					}
+				});
 			}
 		});
 	}

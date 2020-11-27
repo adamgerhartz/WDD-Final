@@ -32,7 +32,7 @@ export default class ValidationHelper {
 
 	isEmpty(str) {
 		const char = str.charCodeAt(0);
-		is (!(Number.isNaN(char))) {
+		if (!(Number.isNaN(char))) {
 			return false;
 		}
 		return true;
