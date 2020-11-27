@@ -15,7 +15,7 @@ export default class LoginModel {
 	
 	authenticatePassword(username, password, callback) {
 		$.post("/password", {username: username, password: password}, (results) => {
-			console.log(results);
+			callback(results);
 		});
 	}
 }
