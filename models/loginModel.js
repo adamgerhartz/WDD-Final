@@ -20,7 +20,7 @@ function validateUsername(username, callback) {
 		if (err) {
 			console.log(err.stack);
 		} else {
-			console.log(db_results);
+			console.log(db_results.rows.length);
 			if (!db_results.rows) {
 				callback(null, false);
 			} else {
