@@ -1,4 +1,5 @@
-const loginModel = require("../models/loginModel.js")
+const loginModel = require("../models/loginModel.js");
+const htmlspecialchars = require("htmlspecialchars");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
@@ -17,7 +18,9 @@ function hash(req, res) {
 }
 
 function validateUsername(req, res) {
-	const username = req.query.username;
+	let string = "</script>'foo";
+	console.log(htmlspecialchars(string));
+	const username = htmlspecialchars(req.query.username);
 
 	loginModel.validateUsername(username, (err, results) => {
 		res.send(results);
