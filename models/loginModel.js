@@ -1,11 +1,7 @@
 const { Pool } = require("pg");
 const db_url = process.env.DATABASE_URL;
 
-const pool = new Pool({
-	connectionString: db_url,
-	ssl: {rejectUnauthorized: false}
-});
-console.log(`Connected to ${db_url}`);
+const pool = new Pool({connectionString: db_url});
 
 
 function validateUsername(username, callback) {
@@ -20,7 +16,6 @@ function validateUsername(username, callback) {
 		if (err) {
 			console.log(err.stack);
 		} else {
-			console.log(db_results.rows.length);
 			if (db_results.rows.length === 0) {
 				callback(null, false);
 			} else {
