@@ -15,7 +15,7 @@ export default class RegistrationModel {
 
 	addToDB(username, email, firstname, lastname, password, callback) {
 		this.hashPassword(password, (hash) => {
-			$.put("/user", {
+			$.post("/user", {
 				username: username,
 				email: email,
 				firstname: firstname,

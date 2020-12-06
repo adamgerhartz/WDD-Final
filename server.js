@@ -15,7 +15,7 @@ express()
 	.post("/hash", loginController.hash)
 	.get("/username", loginController.validateUsername)
 	.post("/password", loginController.validatePassword)
-	.put("/user", registrationController.addUser)
+	.post("/user", registrationController.addUser)
 	.listen(PORT, () => {
 		console.log(`Server listening on port ${PORT}`);
 	});
