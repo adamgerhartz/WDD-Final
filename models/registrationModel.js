@@ -18,3 +18,7 @@ function addUser(user, callback) {
 		}
 	})
 }
+
+module.exports = {
+	addUser: addUser
+}
