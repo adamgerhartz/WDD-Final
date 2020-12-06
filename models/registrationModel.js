@@ -15,8 +15,10 @@ function addUser(user, callback) {
 		if (err) {
 			console.log(err.stack);
 		} else {
-			console.log(response);
-			//callback
+			if (response.rowCount === 1) {
+				const success = {success: true};
+				callback(null, success);
+			}
 		}
 	})
 }

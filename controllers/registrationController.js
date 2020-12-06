@@ -14,7 +14,7 @@ function addUser(req, res) {
 		if (err) {
 			console.error("Failed to add user", err);
 		}
-		console.log(results);
+		res.json(results);
 	});
 }
 

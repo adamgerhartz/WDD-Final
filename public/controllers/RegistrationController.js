@@ -136,11 +136,11 @@ export default class RegistrationController {
 				this.registrationModel.isUsername(username, (result) => {
 					if (result === true) {
 						this.registrationView.renderError('inUnU');				
-					} else {
-						console.log("YES");
-						// add to DB
+					} else {						// add to DB
 						this.registrationModel.addToDB(username, email, firstname, lastname, password, (results) => {
-							console.log(results);
+							if (results) {
+								window.location.href = '../confirmation.html';
+							}
 						});	  
 					}
 				});

@@ -22,7 +22,12 @@ export default class RegistrationModel {
 				lastname: lastname,
 				password: hash
 			}, (results) => {
-				callback(results);
+				const results = JSON.parse(results);
+				if (results.success) {
+					callback(true);
+				} else {
+					callback(false);
+				}
 			});
 		});
 	}
