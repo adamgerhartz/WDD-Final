@@ -22,7 +22,7 @@ export default class RegistrationModel {
 				lastname: lastname,
 				password: hash
 			}, (results) => { 
-				if (result.success) {
+				if (results.success) {
 					callback(true);
 				} else {
 					callback(false);
