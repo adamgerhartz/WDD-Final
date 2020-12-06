@@ -137,6 +137,7 @@ export default class RegistrationController {
 					if (result === true) {
 						this.registrationView.renderError('inUnU');				
 					} else {
+						console.log("YES");
 						// add to DB
 						this.registrationModel.addToDB(username, email, firstname, lastname, password).then((value) => {
 							if (value === '1') {

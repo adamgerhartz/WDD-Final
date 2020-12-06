@@ -13,7 +13,7 @@ export default class RegistrationModel {
 		});
 	}
 
-	addToDb(username, email, firstname, lastname, password, callback) {
+	addToDB(username, email, firstname, lastname, password, callback) {
 		this.hashPassword(password, (hash) => {
 			$.put("/user", {
 				username: username,
