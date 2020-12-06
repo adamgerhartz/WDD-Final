@@ -139,13 +139,9 @@ export default class RegistrationController {
 					} else {
 						console.log("YES");
 						// add to DB
-						this.registrationModel.addToDB(username, email, firstname, lastname, password).then((value) => {
-							if (value === '1') {
-								window.location.href = './registrationConfirmation.php';
-							} else {
-								this.registrationView.renderError('er-upload');
-							}
-						});  
+						this.registrationModel.addToDB(username, email, firstname, lastname, password, (results) => {
+							console.log(results);
+						});	  
 					}
 				});
 			}
