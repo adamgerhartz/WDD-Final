@@ -109,26 +109,26 @@ export default class RegistrationController {
 			// check if we are empty
 			if (isEmptyUsername || isEmptyEmail || isEmptyFirstname || isEmptyLastname || isEmptyPassword || this.registrationView.isErrorDisplayed()) {
 				if (isEmptyUsername) {
-					this.registrationView.renderErrorMessage('un-e');
+					this.registrationView.renderError('un-e');
 				}
 				if (isEmptyEmail) {
-					this.registrationView.renderErrorMessage('ea-e');
+					this.registrationView.renderError('ea-e');
 				}
 				if (isEmptyFirstname) {
-					this.registrationView.renderErrorMessage('fnm-e');
+					this.registrationView.renderError('fnm-e');
 				}
 				if (isEmptyLastname) {
-					this.registrationView.renderErrorMessage('lnm-e');
+					this.registrationView.renderError('lnm-e');
 				}
 				if (isEmptyPassword) {
-					this.registrationView.renderErrorMessage('pw-e');
+					this.registrationView.renderError('pw-e');
 				}
 			}
 
 			// check for valid email address
 			const isValidEmail = this.validationHelper.isValidEmailAddress(this.email);
 			if (!isValidEmail && !isEmptyEmail) {
-				this.registrationView.renderErrorMessage('ea-in');
+				this.registrationView.renderError('ea-in');
 			}
 
 			// check for unique username
@@ -142,7 +142,7 @@ export default class RegistrationController {
 							if (value === '1') {
 								window.location.href = './registrationConfirmation.php';
 							} else {
-								this.registrationView.renderErrorMessage('er-upload');
+								this.registrationView.renderError('er-upload');
 							}
 						});  
 					}
