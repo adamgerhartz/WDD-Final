@@ -1,5 +1,5 @@
 import RenderHelper from "./util/RenderHelper.js";
-const CHILD_LENGTH = 4;
+const CHILD_LENGTH = 5;
 
 export default class RegistrationView {
 	constructor(parent) {
