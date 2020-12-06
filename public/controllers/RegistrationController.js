@@ -32,7 +32,7 @@ export default class RegistrationController {
 			this.registrationView.hideErrorMessages();
 		});
 		this.usernameEl.addEventListener("keyup", (event) => {
-			if (event,target.value != '') {
+			if (event.target.value != '') {
 				const isValidUsername = this.validationHelper.isValidUsername(event.target.value);
 				if (!isValidUsername && !this.registrationView.isErrorDisplayed()) {
 					this.registrationView.renderError('un');
