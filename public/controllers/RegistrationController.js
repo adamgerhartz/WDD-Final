@@ -126,7 +126,7 @@ export default class RegistrationController {
 			}
 
 			// check for valid email address
-			const isValidEmail = this.validationHelper.isValidEmailAddress(this.email);
+			const isValidEmail = this.validationHelper.isValidEmailAddress(email);
 			if (!isValidEmail && !isEmptyEmail) {
 				this.registrationView.renderError('ea-in');
 			}
