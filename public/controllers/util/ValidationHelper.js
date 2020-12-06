@@ -80,7 +80,6 @@ export default class ValidationHelper {
 
 	isWhiteSpaceFront(str) {
 		const char = str.charCodeAt(0);
-		console.log(char);
 		if (char === parseInt('32')) {
 			return true;
 		}

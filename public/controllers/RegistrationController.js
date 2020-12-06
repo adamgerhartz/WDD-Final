@@ -71,5 +71,20 @@ export default class RegistrationController {
 				}
 			}
 		});
+
+		// last name element
+		this.lNameElement.addEventListener("keydown", () => {
+			this.registrationView.hideErrorMessages();
+		});
+		this.lNameElement.addEventListener("keyup", (event) => {
+			if (event.target.value !== '') {
+				const isValidName = this.validationHelper.isValidName(event.target.value);
+				if(!isValidName && !this.registrationView.isErrorDisplayed()) {
+					this.registrationView.renderError('lnm');
+				} else if (isValidName && this.registrationView.isErrorDisplayed()) {
+					this.registrationView.hideErrorMessages();
+				}
+			}
+		});
 	}
 }
