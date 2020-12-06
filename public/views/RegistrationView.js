@@ -15,11 +15,11 @@ export default class RegistrationView {
 		this.parent.appendChild(this.renderHelper.renderInputField("Password"));
 		this.parent.appendChild(this.renderHelper.renderSubmitButton('Register'));
 		callback(
-			[...[...this.parentElement.children][0].children][2], // username element
-			[...[...this.parentElement.children][1].children][2], // email element
-			[...[...[...this.parentElement.children][2].children][0].children][2], // first name element
-			[...[...[...this.parentElement.children][2].children][1].children][2], // last name element
-			[...[...this.parentElement.children][3].children][2] // password element
+			[...[...this.parent.children][0].children][2], // username element
+			[...[...this.parent.children][1].children][2], // email element
+			[...[...[...this.parent.children][2].children][0].children][2], // first name element
+			[...[...[...this.parent.children][2].children][1].children][2], // last name element
+			[...[...this.parent.children][3].children][2] // password element
 		);
 	}
 
