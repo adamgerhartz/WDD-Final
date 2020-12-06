@@ -22,7 +22,7 @@ export default class RegistrationModel {
 				lastname: lastname,
 				password: hash
 			}, (results) => {
-				const results = JSON.parse(results);
+				results = JSON.parse(results);
 				if (results.success) {
 					callback(true);
 				} else {
