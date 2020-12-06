@@ -30,7 +30,7 @@ export default class LoginView {
 	hideErrorMessages() {
 		if (this.parent.childNodes.length > CHILD_LENGTH) {
 			// remove errors
-			for (let i = this.parent.childNodes.length - 1, min = 3; i > min; i--) {
+			for (let i = this.parent.childNodes.length - 1, min = CHILD_LENGTH - 1; i > min; i--) {
 				this.parent.removeChild(this.parent.children[i]);
 			}
 		}

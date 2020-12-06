@@ -1,4 +1,5 @@
 import RenderHelper from "./util/RenderHelper.js";
+const CHILD_LENGTH = 4;
 
 export default class RegistrationView {
 	constructor(parent) {
@@ -6,13 +7,20 @@ export default class RegistrationView {
 		this.renderHelper = new RenderHelper();
 	}
 
-	renderForm() {
+	renderForm(callback) {
 		this.parent.innerHTML = '';
 		this.parent.appendChild(this.renderHelper.renderInputField("Username"));
 		this.parent.appendChild(this.renderHelper.renderInputField("Email"));
 		this.parent.appendChild(this.renderNestedDiv("full-name"));
 		this.parent.appendChild(this.renderHelper.renderInputField("Password"));
 		this.parent.appendChild(this.renderHelper.renderSubmitButton('Register'));
+		callback(
+			[...[...this.parentElement.children][0].children][2], // username element
+			[...[...this.parentElement.children][1].children][2], // email element
+			[...[...[...this.parentElement.children][2].children][0].children][2], // first name element
+			[...[...[...this.parentElement.children][2].children][1].children][2], // last name element
+			[...[...this.parentElement.children][3].children][2] // password element
+		);
 	}
 
 	renderNestedDiv(id) {
@@ -29,5 +37,26 @@ export default class RegistrationView {
 			</div>
 		`);
 		return div;
+	}
+
+	hideErrorMessages() {
+		if (this.parent.childNodes.length > CHILD_LENGTH) {
+			// remove errors
+			for (let i = this.parent.childNodes.length - 1, min = CHILD_LENGTH - 1; i > min; i--) {
+				this.parent.removeChild(this.parent.children[i]);
+			}
+		}
+	}
+
+	isErrorDisplayed() {
+		if (this.parent.childNodes.length > CHILD_LENGTH) {
+			return true;
+		}
+		return false;
+	}
+
+	renderError(type) {
+		const error = this.renderHelper.createError(type);
+		this.parent.appendChild(error);
 	}
 }

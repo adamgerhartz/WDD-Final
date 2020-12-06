@@ -10,14 +10,12 @@ export default class LoginController {
 		this.validationHelper = new ValidationHelper();
 		this.usernameEl = '';
 		this.passwordEl = '';
-		this.submitEl = '';
 	}
 
 	showLoginForm() {
 		this.loginView.renderForm((unElement, pwElement, submitElement) => {
 			this.usernameEl = unElement;
 			this.passwordEl = pwElement;
-			this.submitEl = submitElement;
 			this.addLoginListeners();
 		}); 
 	}
