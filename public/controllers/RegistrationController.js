@@ -97,7 +97,6 @@ export default class RegistrationController {
 			event.preventDefault();
 			console.log(event);
 			const username = event.target[0].value;
-			const 
 		});
 	}
 }
