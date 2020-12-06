@@ -1,6 +1,8 @@
 const { Pool } = require("pg");
 const db_url = process.env.DATABASE_URL;
 
+const pool = new Pool({connectionString: db_url});
+
 function addUser(user, callback) {
 	console.log(`Adding user: ${user.username}`);
 
