@@ -21,10 +21,7 @@ export default class RegistrationModel {
 				firstname: firstname,
 				lastname: lastname,
 				password: hash
-			}, (results) => {
-				console.log(results);
-				const result = JSON.parse(results);
-				console.log(result);
+			}, (results) => { 
 				if (result.success) {
 					callback(true);
 				} else {
