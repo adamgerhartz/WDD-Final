@@ -99,7 +99,7 @@ export default class RegistrationController {
 			const email = event.target[1].value;
 			const firstname = event.target[2].value;
 			const lastname = event.target[3].value;
-			const password = event.targte[4].value;
+			const password = event.target[4].value;
 			const isEmptyUsername = this.validationHelper.isEmpty(username);
 			const isEmptyEmail = this.validationHelper.isEmpty(email);
 			const isEmptyFirstname = this.validationHelper.isEmpty(firstname);
