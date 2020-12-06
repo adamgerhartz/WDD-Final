@@ -32,6 +32,18 @@ export default class RenderHelper {
 			case 'un-e':
 				span.innerHTML += ` Please enter a username`;
 				break;
+			case 'ea-e':
+				span.innerHTML += ` Please enter an email`;
+				break;
+			case 'fnm-e':
+				span.innerHTML += ` Please enter a firstname`;
+				break;
+			case 'lnm-e':
+				span.innerHTML += ` Please enter a lastname`;
+				break;
+			case 'pw-e':
+				span.innerHTML += ` Please enter a password`;
+				break;
 			case 'em-char':
 				span.innerHTML += ` Email must (1) limit itself to 100 characters and (2) contain no white spaces.`;
 				break;
