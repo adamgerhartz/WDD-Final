@@ -86,5 +86,18 @@ export default class RegistrationController {
 				}
 			}
 		});
+
+		// password element
+		this.passwordEl.addEventListener("keydown", () => {
+			this.registrationView.hideErrorMessages();
+		});
+
+		// submit
+		this.parentElement.addEventListener("submit", (event) => {
+			event.preventDefault();
+			console.log(event);
+			const username = event.target[0].value;
+			const 
+		});
 	}
 }
