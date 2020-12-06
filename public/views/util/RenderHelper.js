@@ -26,6 +26,9 @@ export default class RenderHelper {
 			case 'inUn':
 				span.innerHTML += ` Username doesn't exist in the database`;
 				break;
+			case 'inUnU':
+				span.innerHTML += ` This username is already taken. Please enter another one.`;
+				break;
 			case 'un-e':
 				span.innerHTML += ` Please enter a username`;
 				break;

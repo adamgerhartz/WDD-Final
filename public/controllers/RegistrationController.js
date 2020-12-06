@@ -95,8 +95,59 @@ export default class RegistrationController {
 		// submit
 		this.parentElement.addEventListener("submit", (event) => {
 			event.preventDefault();
-			console.log(event);
 			const username = event.target[0].value;
+			const email = event.target[1].value;
+			const firstname = event.target[2].value;
+			const lastname = event.target[3].value;
+			const password = event.targte[4].value;
+			const isEmptyUsername = this.validationHelper.isEmpty(username);
+			const isEmptyEmail = this.validationHelper.isEmpty(email);
+			const isEmptyFirstname = this.validationHelper.isEmpty(firstname);
+			const isEmptyLastname = this.validationHelper.isEmpty(lastname);
+			const isEmptyPassword = this.validationHelper.isEmpty(password);
+			
+			// check if we are empty
+			if (isEmptyUsername || isEmptyEmail || isEmptyFirstname || isEmptyLastname || isEmptyPassword || this.registrationView.isErrorDisplayed()) {
+				if (isEmptyUsername) {
+					this.registrationView.renderErrorMessage('un-e');
+				}
+				if (isEmptyEmail) {
+					this.registrationView.renderErrorMessage('ea-e');
+				}
+				if (isEmptyFirstname) {
+					this.registrationView.renderErrorMessage('fnm-e');
+				}
+				if (isEmptyLastname) {
+					this.registrationView.renderErrorMessage('lnm-e');
+				}
+				if (isEmptyPassword) {
+					this.registrationView.renderErrorMessage('pw-e');
+				}
+			}
+
+			// check for valid email address
+			const isValidEmail = this.validationHelper.isValidEmailAddress(this.email);
+			if (!isValidEmail && !isEmptyEmail) {
+				this.registrationView.renderErrorMessage('ea-in');
+			}
+
+			// check for unique username
+			if (!isEmptyUsername && !this.registrationView.isErrorDisplayed() && isValidEmail) {
+				this.registrationModel.isUsername(username, (result) => {
+					if (result === true) {
+						this.registrationView.renderError('inUnU');				
+					} else {
+						// add to DB
+						this.registrationModel.addToDB(username, email, firstname, lastname, password).then((value) => {
+							if (value === '1') {
+								window.location.href = './registrationConfirmation.php';
+							} else {
+								this.registrationView.renderErrorMessage('er-upload');
+							}
+						});  
+					}
+				});
+			}
 		});
 	}
 }
