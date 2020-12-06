@@ -44,6 +44,9 @@ export default class RenderHelper {
 			case 'pw-e':
 				span.innerHTML += ` Please enter a password`;
 				break;
+			case 'ea-in':
+				span.innerHTML += ` Please enter a valid email address`;
+				break;
 			case 'em-char':
 				span.innerHTML += ` Email must (1) limit itself to 100 characters and (2) contain no white spaces.`;
 				break;
